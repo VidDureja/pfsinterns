@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db0c5317-95c5-41b3-b304-15ebbb800d1a" name="Changes" comment="&quot;Initial commit: Created password generator file&quot;">
-      <change afterPath="$PROJECT_DIR$/.idea/PasswordGenerator.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password.py" beforeDir="false" afterPath="$PROJECT_DIR$/password.py" afterDir="false" />
-    </list>
+    <list default="true" id="db0c5317-95c5-41b3-b304-15ebbb800d1a" name="Changes" comment="so far" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,11 +95,20 @@
       <option name="project" value="LOCAL" />
       <updated>1738614958030</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="so far">
+      <option name="closed" value="true" />
+      <created>1738616659736</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738616659736</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;Initial commit: Created password generator file&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Initial commit: Created password generator file&quot;" />
+    <MESSAGE value="so far" />
+    <option name="LAST_COMMIT_MESSAGE" value="so far" />
   </component>
 </project>
