@@ -3,4 +3,7 @@
 
 ## Just the Overview
 
-I made 3 project here yay
+This is the repostiory for all 3 of my projects as per internship requirnments
+
+just a test
+
