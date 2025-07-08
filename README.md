@@ -5,5 +5,3 @@
 
 This is the repostiory for all 3 of my projects as per internship requirnments
 
-just a test
-
