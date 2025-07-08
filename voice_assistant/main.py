@@ -5,6 +5,7 @@ def speak(text):
     engine = pyttsx3.init()
     engine.say(text)
     engine.runAndWait()
+    engine.runAndWait()
 
 def listen():
     recognizer = sr.Recognizer()
