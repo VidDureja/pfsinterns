@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Task Management System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4">
+            <i class="fas fa-chart-bar me-2"></i>Dashboard
+        </h2>
+        
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title">Total Tasks</h6>
+                                <h3>{{ total_tasks }}</h3>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-tasks fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title">Completed</h6>
+                                <h3>{{ completed_tasks }}</h3>
+                                {% if total_tasks > 0 %}
+                                    <small>{{ "%.1f"|format(completed_tasks / total_tasks * 100) }}%</small>
+                                {% endif %}
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-check-circle fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title">Pending</h6>
+                                <h3>{{ pending_tasks }}</h3>
+                                {% if total_tasks > 0 %}
+                                    <small>{{ "%.1f"|format(pending_tasks / total_tasks * 100) }}%</small>
+                                {% endif %}
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-clock fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title">High Priority</h6>
+                                <h3>{{ high_priority_tasks }}</h3>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-exclamation-triangle fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Recent Tasks -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-history me-2"></i>Recent Tasks
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% if recent_tasks %}
+                            <div class="list-group list-group-flush">
+                                {% for task in recent_tasks %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">{{ task.title }}</h6>
+                                        <small class="text-muted">{{ task.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-{{ 'success' if task.status == 'Completed' else 'warning' if task.status == 'In Progress' else 'secondary' }}">
+                                            {{ task.status }}
+                                        </span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-muted text-center">No recent tasks</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tasks Due Soon -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-calendar-alt me-2"></i>Due Soon (Next 3 Days)
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% if due_soon %}
+                            <div class="list-group list-group-flush">
+                                {% for task in due_soon %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">{{ task.title }}</h6>
+                                        <small class="text-muted">Due: {{ task.due_date.strftime('%Y-%m-%d') }}</small>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-{{ 'danger' if task.priority == 'High' else 'warning' if task.priority == 'Medium' else 'success' }}">
+                                            {{ task.priority }}
+                                        </span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-muted text-center">No tasks due soon</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-bolt me-2"></i>Quick Actions
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="{{ url_for('add_task') }}" class="btn btn-primary w-100 mb-2">
+                                    <i class="fas fa-plus me-1"></i>Add New Task
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="{{ url_for('index') }}" class="btn btn-outline-primary w-100 mb-2">
+                                    <i class="fas fa-list me-1"></i>View All Tasks
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="{{ url_for('filter_tasks', status='Pending') }}" class="btn btn-outline-warning w-100 mb-2">
+                                    <i class="fas fa-clock me-1"></i>Pending Tasks
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="{{ url_for('filter_tasks', priority='High') }}" class="btn btn-outline-danger w-100 mb-2">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>High Priority
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

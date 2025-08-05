@@ -1,1 +1,9 @@
-pillow 
+# Note: Tkinter comes with Python but may need to be installed separately on some systems
+# On macOS: brew install python-tk
+# On Ubuntu/Debian: sudo apt-get install python3-tk
+# On Windows: Usually included with Python installation
+
+# Core dependencies
+# tkinter (usually included with Python)
+# sqlite3 (usually included with Python)
+# datetime (usually included with Python) 
