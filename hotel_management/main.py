@@ -4,7 +4,7 @@ import sqlite3
 from datetime import datetime
 import os
 
-class HotelManagementSystem:
+class HotelManagementSystem: 
     def __init__(self, root):
         self.root = root
         self.root.title('Hotel Management System')
